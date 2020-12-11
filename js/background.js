@@ -1,37 +1,15 @@
-// chrome.runtime.onInstalled.addListener(function() {
-// 	chrome.storage.sync.set({color: '#3aa757'}, function() {
-// 	  console.log("The color is green.");
-// 	});
-// });
-// document.elementFromPoint(1, 1).click()
-// alert('点击')
 
-var siteMap = {
-	"bl": "https://www.bilibili.com/",
-	"jj": "https://juejin.im/",
-	"yk": "https://www.youku.com",
-	"yt": "https://www.youtube.com"
-}
-
-$("#search").focus()
-$(document).keydown(function(event) {
-	if(event.keyCode == 13 && document.activeElement.id == 'search') {
-		if (event.altKey) {
-			// alt + enter
-			var val = $("#search").val()
-			if (val && val.trim()) {
-				window.location.href = siteMap[val.trim()];
+// 创建右键菜单
+console.log("创建右键菜单")
+chrome.contextMenus.create({
+	title: "收藏此页面",
+	onclick: (info, tab) => {
+		http.GET("/collect", {url: tab.url, title: tab.title}, (data) => {
+			if (data && data.code == 100) {
+				alert("收藏成功")
+			} else {
+				alert("【!】收藏失败")
 			}
-		} else {
-			// enter
-			var val = $("#search").val()
-			if (val && val.trim()) {
-				window.location.href = encodeURI("https://www.baidu.com/s?wd=" + val.trim());
-			}
-		}
-	} else if(event.keyCode == 32 && document.activeElement.id != 'search') {
-		// alert()
-		// document.activeElement.id = 'search'
-		$("#search").focus()
+		})
 	}
-});
+})

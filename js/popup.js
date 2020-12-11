@@ -1,4 +1,10 @@
 $("#search").focus()
+var siteMap = {
+	"bl": "https://www.bilibili.com/",
+	"jj": "https://juejin.im/",
+	"yk": "https://www.youku.com",
+	"yt": "https://www.youtube.com"
+}
 function sendMessage(val) {
 	// console.log(chrome.tabs)
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {

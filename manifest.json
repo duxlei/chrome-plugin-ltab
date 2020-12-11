@@ -64,7 +64,7 @@
 	// 权限申请
 	"permissions":
 	[
-		// "contextMenus", // 右键菜单
+		"contextMenus", // 右键菜单
 		"tabs", // 标签
 		// "notifications", // 通知
 		// "webRequest", // web请求
@@ -108,8 +108,8 @@
 	,"commands": {
 		"_execute_browser_action": {
 			"suggested_key": {
-				"windows": "Alt+S",
-				"mac": "Alt+S"
+				"windows": "Alt+A",
+				"mac": "Alt+A"
 			}
 		}
 	}
